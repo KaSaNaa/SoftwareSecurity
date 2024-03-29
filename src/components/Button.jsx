@@ -15,7 +15,6 @@ const Button = ({onClick, type, disabled, children}) => {
 
 export default Button
 
-
 const ButtonWrapper = styled.button`
   border-radius: 10px;
 `
