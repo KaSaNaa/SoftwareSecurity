@@ -7,7 +7,7 @@ const Button = ({onClick, type, disabled, children}) => {
     onClick={onClick}
     type={type}
     disabled={disabled}
-    className = 'bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-2 px-4 rounded'>
+    className = 'bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white font-semibold py-1 px-4'>
     {children}
     </ButtonWrapper>
   )
@@ -15,6 +15,7 @@ const Button = ({onClick, type, disabled, children}) => {
 
 export default Button
 
+
 const ButtonWrapper = styled.button`
-  padding: 9px 20px;
+  border-radius: 10px;
 `
