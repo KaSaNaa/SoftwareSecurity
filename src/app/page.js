@@ -1,7 +1,7 @@
 'use client'
 import styled from 'styled-components';
 import './globals.css'
-import Button from "@/components/Button";
+import Appbar from '@/components/AppBar';
 
 export default function Home() {
   const btnAction = () => {
@@ -10,15 +10,14 @@ export default function Home() {
 
   return (
     <HomeWrapper>
-      <Button onClick={btnAction} type={"button"} disabled={false}>
-        Click me
-      </Button>
+    <Appbar />
     </HomeWrapper>
   );
 }
 
 const HomeWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
