@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { MenuBook } from '@material-ui/icons';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -36,10 +37,9 @@ function Appbar() {
   };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" style={{backgroundColor: 'transparent'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -53,6 +53,7 @@ function Appbar() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              filter: 'blur(2px)'
             }}
           >
             LOGO
@@ -94,7 +95,7 @@ function Appbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <MenuBook style={{margin: '10px'}}/>
           <Typography
             variant="h5"
             noWrap
@@ -111,9 +112,9 @@ function Appbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MAKE A WISH
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
             {pages.map((page) => (
               <Button
                 key={page}
