@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -35,6 +36,23 @@ const Record = (props) => (
     </td>
   </tr>
 );
+
+// This method fetches the records from the database.
+// eslint-disable-next-line react-hooks/rules-of-hooks
+useEffect(() => {
+    async function getRecords() {
+      const response = await fetch(`http://localhost:5050/record/`);
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        console.error(message);
+        return;
+      }
+      const records = await response.json();
+      setRecords(records);
+    }
+    getRecords();
+    return;
+  }, [records.length]);
 
 export default function RecordList() {
   const [records, setRecords] = useState([]);
