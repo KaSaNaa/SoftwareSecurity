@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { MenuBook } from '@material-ui/icons';
+import { MenuBook, MenuBookOutlined, MenuBookRounded, Public } from '@material-ui/icons';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -44,7 +44,7 @@ function Appbar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="https://github.com/KaSaNaa/SoftwareSecurity"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -53,7 +53,6 @@ function Appbar() {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-              filter: 'blur(2px)'
             }}
           >
             LOGO
@@ -95,7 +94,7 @@ function Appbar() {
               ))}
             </Menu>
           </Box>
-          <MenuBook style={{margin: '10px'}}/>
+          <Public style={{margin: '1rem'}}/>
           <Typography
             variant="h5"
             noWrap
@@ -112,7 +111,7 @@ function Appbar() {
               textDecoration: 'none',
             }}
           >
-            MAKE A WISH
+            SWApp
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
             {pages.map((page) => (

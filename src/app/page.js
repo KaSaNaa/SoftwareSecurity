@@ -4,10 +4,6 @@ import './globals.css'
 import Appbar from '@/components/AppBar';
 
 export default function Home() {
-  const btnAction = () => {
-    alert('Button clicked')
-  }
-
   return (
     <HomeWrapper>
     <Appbar />
