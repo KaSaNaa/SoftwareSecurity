@@ -1,33 +1,17 @@
-import { useMemo, useState, useEffect } from "react"
-import ReactWebChat, { createDirectLine } from "botframework-webchat"
+import { useMemo } from 'react';
+import ReactWebChat, { createDirectLine } from 'botframework-webchat';
 
+const ChatBot = () => {
+  const directLine = useMemo(() => createDirectLine({ token: 'YOUR_DIRECT_LINE_TOKEN' }), []);
 
-export const ChatBot = () => {
-  const [token, setToken] = useState("")
-  const directLine = useMemo(() => createDirectLine({ token }), [token])
-
-const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  return <ReactWebChat styleOptions={{display: 'flex'}} directLine={directLine} userID="YOUR_USER_ID" />;
 };
 
-const fetchData = async () => {
-    const response = await fetch("https://localhost/api/chatbot", requestOptions)
-    const data = await response.json()
-    setToken(data.data.token)
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-
-  return (
-    <>
-      <div className="azure-chatbot">
-        {<ReactWebChat directLine={directLine} />}
-      </div>
-    </>
+const Bot = () => {
+  return(
+    <div style={{display: 'flex'}}>
+      <ChatBot/>
+    </div>
   )
 }
-export default ChatBot
+export default Bot
