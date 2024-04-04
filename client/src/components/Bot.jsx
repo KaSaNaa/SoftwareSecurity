@@ -1,17 +1,19 @@
-import { useMemo } from 'react';
-import ReactWebChat, { createDirectLine } from 'botframework-webchat';
+import { DirectLine } from 'botframework-directlinejs';
+import React from 'react';
+import ReactWebChat from 'botframework-webchat';
 
-const ChatBot = () => {
-  const directLine = useMemo(() => createDirectLine({ token: 'YOUR_DIRECT_LINE_TOKEN' }), []);
+class Bot extends React.Component { // Fix the class declaration
+  constructor(props) {
+    super(props);
 
-  return <ReactWebChat styleOptions={{display: 'flex'}} directLine={directLine} userID="YOUR_USER_ID" />;
-};
+    this.directLine = new DirectLine({ token: 'YOUR_DIRECT_LINE_TOKEN' });
+  }
 
-const Bot = () => {
-  return(
-    <div style={{display: 'flex'}}>
-      <ChatBot/>
-    </div>
-  )
+  render() {
+    return (
+      <ReactWebChat directLine={this.directLine} userID='YOUR_USER_ID' />
+    );
+  }
 }
-export default Bot
+
+export default Bot; // Add export statement
