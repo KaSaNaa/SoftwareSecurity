@@ -11,7 +11,7 @@ class Bot extends React.Component { // Fix the class declaration
 
   render() {
     return (
-      <ReactWebChat directLine={this.directLine} userID='YOUR_USER_ID' />
+      <ReactWebChat styleOptions={{backgroundColor: 'yellow', primaryFont: 'Inter'}} directLine={this.directLine} userID='YOUR_USER_ID' />
     );
   }
 }
