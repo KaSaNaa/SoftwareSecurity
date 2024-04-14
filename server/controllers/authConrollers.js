@@ -33,7 +33,7 @@ exports.login = async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, process.env.secretKey, { expiresIn: '1h' });
     res.cookie('token', token, { httpOnly: true });
     res.json({ message: 'Login successful', token });
   } catch (error) {
