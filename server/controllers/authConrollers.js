@@ -3,7 +3,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const BankAccount = require("../models/BankAccount");
-const JWT_SECRET = process.env.JWT_SECRET;
+const { JWT_SECRET } = require("../config");
+// app.js or server.js
+const JWT_SECRET_KEY = JWT_SECRET;
 
 // Register a new user
 exports.register = async (req, res) => {
@@ -90,7 +92,7 @@ exports.login = async (req, res) => {
     }
 
     // Create a token
-    const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET_KEY, {
       expiresIn: "1h",
     });
     // Send the token as a cookie

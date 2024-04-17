@@ -1,6 +1,7 @@
 // middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET;
+const { JWT_SECRET } = require('../config');
+const JWT_SECRET_KEY = JWT_SECRET;
 
 const authMiddleware = (req, res, next) => {
   const token = req.cookies.token;
@@ -8,7 +9,7 @@ const authMiddleware = (req, res, next) => {
     return res.status(401).json({ message: 'Unauthorized' });
   }
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET_KEY);
     req.userId = decoded.userId;
     next();
   } catch (error) {
