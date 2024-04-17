@@ -1,13 +1,15 @@
-// Assuming this code is within your transactionController.js file
-
 const User = require('../models/User');
 
 exports.transferFunds = async (req, res) => {
   try {
     const { recipientEmail, amount } = req.body;
+
     const senderId = req.userId; // Assuming userId is set in authentication middleware
+
     const sender = await User.findById(senderId);
+    
     const recipient = await User.findOne({ email: recipientEmail });
+    
     // Check if sender and recipient exist
     if (!sender || !recipient) {
       return res.status(404).json({ message: 'Sender or recipient not found' });
@@ -32,6 +34,7 @@ exports.transferFunds = async (req, res) => {
     await recipient.save();
 
     res.json({ message: 'Funds transferred successfully' });
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });
