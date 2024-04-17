@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   balance: { type: Number, required: true }, // Fix: Provide a valid data type for the balance field
+  bankAccountNumber: { type: String, required: true, unique: true },
   role: { type: String, enum: ['admin', 'user'], default: 'user' },
 });
 

@@ -8,7 +8,6 @@ exports.transferFunds = async (req, res) => {
     const senderId = req.userId; // Assuming userId is set in authentication middleware
     const sender = await User.findById(senderId);
     const recipient = await User.findOne({ email: recipientEmail });
-
     // Check if sender and recipient exist
     if (!sender || !recipient) {
       return res.status(404).json({ message: 'Sender or recipient not found' });
