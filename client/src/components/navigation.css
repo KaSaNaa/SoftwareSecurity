@@ -1,0 +1,29 @@
+.navigation-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+
+}
+.navigation-button, .logout-btn{
+    border: 1px solid rgb(156, 155, 155);
+    background-color: #EBEBEB;
+    width: 188px;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 21px;
+    color: #484848;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.3s all ease;
+}
+
+.logout-btn{
+    color: #C43750;
+}
+
+.navigation-button:hover, .logout-btn:hover{
+    background-color: lightblue;
+    color: black;
+}
