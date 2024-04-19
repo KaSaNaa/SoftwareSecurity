@@ -1,0 +1,73 @@
+.main-li-container {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+  }
+  
+  .signup-head {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .item-list {
+    margin-bottom: 20px;
+  }
+  
+  .class-label {
+    font-size: 18px;
+    color: #646464;
+    font-weight: lighter;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .class-input {
+    border: 1px solid #b6b6b6;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+  }
+  
+  .signup-button {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #1953ad;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .signup-button:hover {
+    background-color: #123b80;
+  }
+
+  .signin-text{
+    color: black;
+    font-size: 18px;
+    font-weight: 300px;
+  }
+  .signin-link{
+    color: #1953AD;
+    text-decoration: underline;
+
+  }
+  .signin-link:hover{
+    color: #08244f;
+
+  }
+  .decoy-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin-top: -10px;
+  }
+  

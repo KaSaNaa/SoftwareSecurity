@@ -1,0 +1,13 @@
+.big-container{
+    padding-top: 30px;
+    padding-right: 10px;
+}
+.main-container{
+    background-image: url('../assets/images/Side.JPG');
+    width: 700px;
+    height:700px;
+    background-position: right;
+    justify-content: end;
+    
+    
+}
