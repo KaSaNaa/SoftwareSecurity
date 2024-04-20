@@ -26,7 +26,7 @@ export default function ItemSignup() {
       body: JSON.stringify(formData),
     });
     const data = await response.json();
-    console.log(data);
+    alert(data.message)
   };
 
   return (
@@ -70,7 +70,7 @@ export default function ItemSignup() {
             className="class-input"
             type="text"
             id="account"
-            name="account"
+            name="bankAccountNumber"
             onChange={handleChange}
             value={formData.bankAccountNumber}
           />

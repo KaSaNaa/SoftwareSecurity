@@ -1,7 +1,30 @@
 import { Link } from "react-router-dom";
 import "./ItemSignup.css";
+import { useState } from "react";
 
 export default function ItemSignin() {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+    const data = await response.json();
+    console.log(data)
+  }
+
   return (
     <div className="main-li-container">
       <h1 className="signup-head">Sign In</h1>
@@ -14,6 +37,8 @@ export default function ItemSignin() {
             className="class-input"
             type="email"
             id="email"
+            onChange={handleChange}
+            value={formData.email}
             name="email"
             autoFocus
           />
@@ -24,6 +49,8 @@ export default function ItemSignin() {
           </label>
           <input
             className="class-input"
+            onChange={handleChange}
+            value={formData.password}
             type="password"
             id="password"
             name="password"
