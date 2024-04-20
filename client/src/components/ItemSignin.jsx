@@ -28,7 +28,7 @@ export default function ItemSignin() {
   return (
     <div className="main-li-container">
       <h1 className="signup-head">Sign In</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="item-list">
           <label className="class-label" htmlFor="email">
             Email

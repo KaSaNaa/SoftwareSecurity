@@ -26,7 +26,13 @@ export default function ItemSignup() {
       body: JSON.stringify(formData),
     });
     const data = await response.json();
-    alert(data.message)
+    
+    if (data.token) {
+      localStorage.setItem("token", data.token);
+      history.pushState('/home');
+    } else {
+      alert(data + 'Login Failed')
+    }
   };
 
   return (
