@@ -29,7 +29,10 @@ export default function ItemSignin() {
       const data = await response.json();
       console.log(data);
 
-      const authResponse = await fetch("http://localhost:5000/api/auth/check-auth");
+      const authResponse = await fetch("http://localhost:5000/api/auth/check-auth", {
+        method: "GET",
+        credentials: "include",
+      });
       if (!authResponse.ok) {
         throw new Error(`HTTP error! status: ${authResponse.status}`);
       }
@@ -41,7 +44,7 @@ export default function ItemSignin() {
         console.log("User is not authenticated");
       }
     } catch (error) {
-      console.error(error);
+      console.error("ItemSignin.jsx\n" + error);
     }
   };
 

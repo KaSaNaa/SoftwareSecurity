@@ -10,14 +10,8 @@ const JWT_SECRET_KEY = JWT_SECRET;
 // Register a new user
 exports.register = async (req, res) => {
   try {
-    const { 
-      name, 
-      email, 
-      nic, 
-      password,
-      bankAccountNumber 
-    } = req.body;
-    
+    const { name, email, nic, password, bankAccountNumber } = req.body;
+
     // Check if the bank account number is provided
     if (!bankAccountNumber) {
       return res
@@ -40,7 +34,9 @@ exports.register = async (req, res) => {
     }
 
     // Check if bank account number is already associated with an existing user
-    const existingUserWithAccount = await User.findOne({ account_number: bankAccountNumber});
+    const existingUserWithAccount = await User.findOne({
+      account_number: bankAccountNumber,
+    });
     if (existingUserWithAccount) {
       return res
         .status(400)
@@ -96,12 +92,16 @@ exports.login = async (req, res) => {
       expiresIn: "1h",
     });
     // Send the token as a cookie
-    res.cookie("token", token, { httpOnly: true });
+    console.log("Setting cookies...");
+    res
+      .cookie("token", token, { httpOnly: true, domain: "localhost" })
+      .cookie("tokenExists", "true", { httpOnly: false, domain: "localhost" });
+    console.log("Cookies set");
     // Respond with a success message
     res.json({
       message: "Login successful",
       token,
-      user: { id: user._id, name: user.name }
+      user: { id: user._id, name: user.name },
     });
   } catch (error) {
     console.error(error);
@@ -113,14 +113,18 @@ exports.checkAuth = async (req, res) => {
   const token = req.cookies.token;
 
   if (!token) {
+    res.clearCookie("tokenExists");
     return res.json({ isAuthenticated: false });
   }
 
   try {
     jwt.verify(token, JWT_SECRET_KEY);
+    res.cookie("tokenExists", "true", { httpOnly: false });
     return res.json({ isAuthenticated: true });
   } catch (error) {
-    console.error('An error occurred:', error);
+    console.log("authControllers.checkAuth error:", error);
+    res.clearCookie("tokenExists");
+    console.error("An error occurred:", error);
     return res.json({ isAuthenticated: false });
   }
-}; // Add a semicolon here
+};
