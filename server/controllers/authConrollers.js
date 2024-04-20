@@ -98,9 +98,29 @@ exports.login = async (req, res) => {
     // Send the token as a cookie
     res.cookie("token", token, { httpOnly: true });
     // Respond with a success message
-    res.json({ message: "Login successful", token });
+    res.json({
+      message: "Login successful",
+      token,
+      user: { id: user._id, name: user.name }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 };
+
+exports.checkAuth = async (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.json({ isAuthenticated: false });
+  }
+
+  try {
+    jwt.verify(token, JWT_SECRET_KEY);
+    return res.json({ isAuthenticated: true });
+  } catch (error) {
+    console.error('An error occurred:', error);
+    return res.json({ isAuthenticated: false });
+  }
+}; // Add a semicolon here

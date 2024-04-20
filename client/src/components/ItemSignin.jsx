@@ -4,26 +4,46 @@ import { useState } from "react";
 
 export default function ItemSignin() {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const response = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await response.json();
-    console.log(data)
-  }
+    try {
+      event.preventDefault();
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      const authResponse = await fetch("http://localhost:5000/api/auth/check-auth");
+      if (!authResponse.ok) {
+        throw new Error(`HTTP error! status: ${authResponse.status}`);
+      }
+      const authData = await authResponse.json();
+
+      if (authData.isAuthenticated) {
+        console.log("User is authenticated");
+      } else {
+        console.log("User is not authenticated");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="main-li-container">

@@ -8,10 +8,17 @@ const ProtectedRoutes = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsAuthenticated(true);
-    }
+    const checkAuth = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/auth/check-auth');
+        const data = await response.json();
+        setIsAuthenticated(data.isAuthenticated);
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+    };
+
+    checkAuth();
   }, []);
 
   if (!isAuthenticated) {

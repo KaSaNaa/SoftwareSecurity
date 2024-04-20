@@ -3,10 +3,12 @@ import "./ItemSignup.css";
 import { useState } from "react";
 
 export default function ItemSignup() {
+  // eslint-disable-next-line no-unused-vars
+  const [user, setUser] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     nic: "",
-    bankAccountNumber : "",
+    bankAccountNumber: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -26,12 +28,12 @@ export default function ItemSignup() {
       body: JSON.stringify(formData),
     });
     const data = await response.json();
-    
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      history.pushState('/home');
+
+    if (data.user) {
+      setUser(data.user);
+      history.pushState("/home");
     } else {
-      alert(data + 'Login Failed')
+      console.log("Login failed");
     }
   };
 
