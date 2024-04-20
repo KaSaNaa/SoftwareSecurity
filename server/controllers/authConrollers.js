@@ -1,9 +1,9 @@
 // controllers/authController.js
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
-const BankAccount = require("../models/BankAccount");
-const { JWT_SECRET } = require("../config");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+const BankAccount = require('../models/BankAccount');
+const { JWT_SECRET } = require('../config');
 // app.js or server.js
 const JWT_SECRET_KEY = JWT_SECRET;
 
@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
     if (!bankAccountNumber) {
       return res
         .status(400)
-        .json({ message: "Bank account number is required" });
+        .json({ message: 'Bank account number is required' });
     }
 
     console.log(bankAccountNumber, nic);
@@ -30,7 +30,7 @@ exports.register = async (req, res) => {
     if (!bankAccountExists) {
       return res
         .status(400)
-        .json({ message: "Invalid Bank Account Number or NIC" });
+        .json({ message: 'Invalid Bank Account Number or NIC' });
     }
 
     // Check if bank account number is already associated with an existing user
@@ -40,7 +40,7 @@ exports.register = async (req, res) => {
     if (existingUserWithAccount) {
       return res
         .status(400)
-        .json({ message: "Bank account number already registered" });
+        .json({ message: 'Bank account number already registered' });
     }
 
     // Hash the password
@@ -59,10 +59,10 @@ exports.register = async (req, res) => {
     // Save the user to the database
     await user.save();
 
-    res.status(201).json({ message: "User registered successfully" });
+    res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
@@ -76,7 +76,7 @@ exports.login = async (req, res) => {
 
     // Check if the user exists
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: 'User not found' });
     }
 
     // Compare the password
@@ -84,28 +84,28 @@ exports.login = async (req, res) => {
 
     // If the password does not match
     if (!isMatch) {
-      return res.status(401).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     // Create a token
     const token = jwt.sign({ userId: user._id }, JWT_SECRET_KEY, {
-      expiresIn: "1h",
+      expiresIn: '1h',
     });
     // Send the token as a cookie
-    console.log("Setting cookies...");
+    console.log('Setting cookies...');
     res
-      .cookie("token", token, { httpOnly: true, domain: "localhost" })
-      .cookie("tokenExists", "true", { httpOnly: false, domain: "localhost" });
-    console.log("Cookies set");
+      .cookie('token', token, { httpOnly: true, secure: false, sameSite: 'none'})
+      .cookie('tokenExists', 'true', { httpOnly: false, secure: false, sameSite: 'none'});
+    console.log('Cookies set');
     // Respond with a success message
     res.json({
-      message: "Login successful",
+      message: 'Login successful',
       token,
       user: { id: user._id, name: user.name },
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
@@ -113,18 +113,18 @@ exports.checkAuth = async (req, res) => {
   const token = req.cookies.token;
 
   if (!token) {
-    res.clearCookie("tokenExists");
+    res.clearCookie('tokenExists');
     return res.json({ isAuthenticated: false });
   }
 
   try {
     jwt.verify(token, JWT_SECRET_KEY);
-    res.cookie("tokenExists", "true", { httpOnly: false });
+    res.cookie('tokenExists', 'true', { httpOnly: false });
     return res.json({ isAuthenticated: true });
   } catch (error) {
-    console.log("authControllers.checkAuth error:", error);
-    res.clearCookie("tokenExists");
-    console.error("An error occurred:", error);
+    console.log('authControllers.checkAuth error:', error);
+    res.clearCookie('tokenExists');
+    console.error('An error occurred:', error);
     return res.json({ isAuthenticated: false });
   }
 };

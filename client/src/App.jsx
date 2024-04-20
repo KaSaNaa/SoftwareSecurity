@@ -1,25 +1,25 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from 'react-router-dom';
 
-import HomePage from "./pages/HomePage";
-import { RouterProvider } from "react-router-dom";
-import SigninPage from "./pages/SigninPage";
-import ProtectedRoutes from "./routes/ProtectedRoutes";
-import SignupPage from "./pages/SignupPage";
+import HomePage from './pages/HomePage';
+import { RouterProvider } from 'react-router-dom';
+import SigninPage from './pages/SigninPage';
+import ProtectedRoutes from './routes/ProtectedRoutes';
+import SignupPage from './pages/SignupPage';
 
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <SigninPage />,
       children: [
         {
-          path: "/signin",
+          path: '/signin',
           element: <SigninPage />,
         },
       ],
     },
     {
-      path: "/home",
+      path: '/home',
       element: (
         <ProtectedRoutes>
           <HomePage />
@@ -27,19 +27,19 @@ const App = () => {
       ),
       children: [
         {
-          path: "/home",
+          path: '/home',
           element: <HomePage />,
         },
       ],
     },
     {
-      path: "/signup",
+      path: '/signup',
       element: (
         <SignupPage />
       ),
       children: [
         {
-          path: "/signup",
+          path: '/signup',
           element: <SignupPage />,
         },
       ],

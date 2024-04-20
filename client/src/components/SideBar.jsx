@@ -1,20 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 const SideBar = () => {
   return (
     <>
-      <SidebarWrapper className="sidebar">
+      <SidebarWrapper className='sidebar'>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <a href='#'>Home</a>
           </li>
           <li>
-            <a href="#">Transaction</a>
+            <a href='#'>Transaction</a>
           </li>
           <li>
-            <a href="#">Contact Info</a>
+            <a href='#'>Contact Info</a>
           </li>
           <li>
-            <a href="#" className="text-red-600">Sign out</a>
+            <a href='#' className='text-red-600'>Sign out</a>
           </li>
         </ul>
       </SidebarWrapper>

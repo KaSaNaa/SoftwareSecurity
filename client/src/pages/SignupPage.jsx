@@ -1,11 +1,11 @@
-import "./signupPage.css";
-import Banking from "../components/Banking";
-import ItemSignup from "../components/ItemSignup";
+import './signupPage.css';
+import Banking from '../components/Banking';
+import ItemSignup from '../components/ItemSignup';
 
 const SignupPage = () => {
   return (
     <div>
-      <div className="all-in-signup">
+      <div className='all-in-signup'>
       <ItemSignup />
       <Banking />
     </div>

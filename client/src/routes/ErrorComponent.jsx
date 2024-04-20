@@ -4,7 +4,7 @@ function ErrorComponent({ message }) {
       <div>
         <h1>Error</h1>
         <p>{message}</p>
-        <a href="/signin">Click here to login</a>
+        <a href='/signin'>Click here to login</a>
       </div>
     );
   }

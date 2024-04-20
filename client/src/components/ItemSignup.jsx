@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import "./ItemSignup.css";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import './ItemSignup.css';
+import { useState } from 'react';
 
 export default function ItemSignup() {
   // eslint-disable-next-line no-unused-vars
   const [user, setUser] = useState(null);
   const [formData, setFormData] = useState({
-    name: "",
-    nic: "",
-    bankAccountNumber: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    name: '',
+    nic: '',
+    bankAccountNumber: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
 
   const handleChange = (event) => {
@@ -20,10 +20,10 @@ export default function ItemSignup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/register", {
-      method: "POST",
+    const response = await fetch('http://localhost:5000/api/auth/register', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
     });
@@ -31,110 +31,110 @@ export default function ItemSignup() {
 
     if (data.user) {
       setUser(data.user);
-      history.pushState("/home");
+      history.pushState('/home');
     } else {
-      console.log("Login failed");
+      console.log('Login failed');
     }
   };
 
   return (
-    <div className="main-li-container">
-      <h1 className="signup-head">Sign In</h1>
+    <div className='main-li-container'>
+      <h1 className='signup-head'>Sign In</h1>
       <form onSubmit={handleSubmit}>
-        <div className="item-list">
-          <label className="class-label" htmlFor="name">
+        <div className='item-list'>
+          <label className='class-label' htmlFor='name'>
             Name
           </label>
           <input
-            className="class-input"
-            type="text"
-            id="name"
-            name="name"
+            className='class-input'
+            type='text'
+            id='name'
+            name='name'
             onChange={handleChange}
             value={formData.name}
             autoFocus
           />
         </div>
 
-        <div className="item-list">
-          <label className="class-label" htmlFor="nic">
+        <div className='item-list'>
+          <label className='class-label' htmlFor='nic'>
             NIC Number
           </label>
           <input
-            className="class-input"
-            type="text"
-            id="nic"
-            name="nic"
+            className='class-input'
+            type='text'
+            id='nic'
+            name='nic'
             onChange={handleChange}
             value={formData.nic}
           />
         </div>
 
-        <div className="item-list">
-          <label className="class-label" htmlFor="account">
+        <div className='item-list'>
+          <label className='class-label' htmlFor='account'>
             Account Number
           </label>
           <input
-            className="class-input"
-            type="text"
-            id="account"
-            name="bankAccountNumber"
+            className='class-input'
+            type='text'
+            id='account'
+            name='bankAccountNumber'
             onChange={handleChange}
             value={formData.bankAccountNumber}
           />
         </div>
 
-        <div className="item-list">
-          <label className="class-label" htmlFor="email">
+        <div className='item-list'>
+          <label className='class-label' htmlFor='email'>
             Email
           </label>
           <input
-            className="class-input"
-            type="email"
-            id="email"
-            name="email"
+            className='class-input'
+            type='email'
+            id='email'
+            name='email'
             onChange={handleChange}
             value={formData.email}
           />
         </div>
 
-        <div className="item-list">
-          <label className="class-label" htmlFor="password">
+        <div className='item-list'>
+          <label className='class-label' htmlFor='password'>
             Password
           </label>
           <input
-            className="class-input"
-            type="password"
-            id="password"
-            name="password"
+            className='class-input'
+            type='password'
+            id='password'
+            name='password'
             value={formData.password}
             onChange={handleChange}
           />
         </div>
 
-        <div className="item-list">
-          <label className="class-label" htmlFor="confirmPassword">
+        <div className='item-list'>
+          <label className='class-label' htmlFor='confirmPassword'>
             Confirm Password
           </label>
           <input
-            className="class-input"
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
+            className='class-input'
+            type='password'
+            id='confirmPassword'
+            name='confirmPassword'
             onChange={handleChange}
           />
         </div>
 
-        <div className="item-list">
-          <button className="signup-button" type="submit">
+        <div className='item-list'>
+          <button className='signup-button' type='submit'>
             Sign Up
           </button>
         </div>
 
-        <div className="decoy-div">
-          <p className="signin-text">
-            Already have an account??{" "}
-            <Link className="signin-link" to="/signin">
+        <div className='decoy-div'>
+          <p className='signin-text'>
+            Already have an account??{' '}
+            <Link className='signin-link' to='/signin'>
               Sign in
             </Link>
           </p>
