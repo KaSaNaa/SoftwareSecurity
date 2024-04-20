@@ -1,33 +1,37 @@
-// import SideBar from "./components/SideBar";
+import { createBrowserRouter } from "react-router-dom";
 
-// eslint-disable-next-line no-unused-vars
-import Banking from "./components/Banking";
-// import ChangingMiddle from "./components/ChangingMiddle";
-// eslint-disable-next-line no-unused-vars
-import ItemSignin from "./components/ItemSignin";
-// eslint-disable-next-line no-unused-vars
-import ItemSignup from "./components/ItemSignup";
-import SigninPage from "./pages/SigninPage";
-import SignupPage from "./pages/SignupPage";
-import MoneyTransfer from "./components/MoneyTransfer";
 import HomePage from "./pages/HomePage";
+import { BrowserRouter as Router, Route, Routes, RouterProvider } from "react-router-dom";
+import SigninPage from "./pages/SigninPage";
 
 
 const App = () => {
-  return (
-    <>
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <SigninPage />,
+      children: [
+        {
+          path: "/",
+          element: <SigninPage />,
+        },
+      ],
+    },
+    {
+      path: "/home",
+      element: <HomePage />,
+      children: [
+        {
+          path: "/home",
+          element: <HomePage />,
+        },
+      ],
+    },
+  ]);
 
-      {/* <SideBar /> */}
-      {/* <h1>APP</h1> */}
-      {/* <Banking/> */}
-      {/* <ItemSignup/> */}
-      {/* <SignupPage/> */}
-      {/* <SigninPage/> */}
-      {/* <ChangingMiddle/> */}
-      {/* <MoneyTransfer/> */}
-      <HomePage/>
-     
-    </>
+
+  return (
+    <RouterProvider router={router} />
   );
 };
 export default App;
