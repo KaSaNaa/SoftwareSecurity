@@ -5,6 +5,8 @@
     margin: 10px;
     background-color: white;
     letter-spacing: 2px;
+    /* height: 800px; */
+    margin-right: 0px;
 
 }
 .navigation-button, .logout-btn{

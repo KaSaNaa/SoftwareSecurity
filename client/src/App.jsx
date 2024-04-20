@@ -7,9 +7,10 @@ import Banking from "./components/Banking";
 import ItemSignin from "./components/ItemSignin";
 // eslint-disable-next-line no-unused-vars
 import ItemSignup from "./components/ItemSignup";
-// import SigninPage from "./pages/SigninPage";
-// import SignupPage from "./pages/SignupPage";
+import SigninPage from "./pages/SigninPage";
+import SignupPage from "./pages/SignupPage";
 import MoneyTransfer from "./components/MoneyTransfer";
+import HomePage from "./pages/HomePage";
 
 
 const App = () => {
@@ -23,7 +24,8 @@ const App = () => {
       {/* <SignupPage/> */}
       {/* <SigninPage/> */}
       {/* <ChangingMiddle/> */}
-      <MoneyTransfer/>
+      {/* <MoneyTransfer/> */}
+      <HomePage/>
      
     </>
   );
