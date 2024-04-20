@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
-import { BrowserRouter as Router, Route, Routes, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import SigninPage from "./pages/SigninPage";
-
+import ProtectedRoutes from "./routes/ProtectedRoutes";
+import SignupPage from "./pages/SignupPage";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -12,14 +13,18 @@ const App = () => {
       element: <SigninPage />,
       children: [
         {
-          path: "/",
+          path: "/signin",
           element: <SigninPage />,
         },
       ],
     },
     {
       path: "/home",
-      element: <HomePage />,
+      element: (
+        <ProtectedRoutes>
+          <HomePage />
+        </ProtectedRoutes>
+      ),
       children: [
         {
           path: "/home",
@@ -27,11 +32,20 @@ const App = () => {
         },
       ],
     },
+    {
+      path: "/signup",
+      element: (
+        <SignupPage />
+      ),
+      children: [
+        {
+          path: "/signup",
+          element: <SignupPage />,
+        },
+      ],
+    },
   ]);
 
-
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 };
 export default App;
