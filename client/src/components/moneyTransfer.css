@@ -1,0 +1,145 @@
+.transaction-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(190, 190, 190);
+    margin: 10px;
+    background-color: white;
+    justify-content: space-evenly;
+    align-items: start;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px rgb(105, 105, 105);
+    letter-spacing: 2px;
+    width: auto;
+    height: 100%;
+  }
+  
+  .main-transation-header {
+    font-size: 23px;
+    font-weight: bold;
+    color: #000000;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .middle-transcation {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 90%;
+  }
+  
+  .transaction-little-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    padding: 10px;
+    margin-left: 10px;
+  }
+  
+  .transaction-mid-deatil {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(183, 183, 183);
+    box-shadow: 1px 1px 2px rgb(169, 169, 169);
+    width: auto;
+    height: auto;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right:30px ;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }
+  
+  .div-transation-left {
+    align-self: flex-start;
+    margin-left: 10px;
+    padding: 5px;
+    gap: 10px;
+    
+  }
+  
+  .pay-from {
+    align-self: flex-start;
+    gap: 10px;
+  }
+  
+  .pay-header {
+  }
+  
+  .decoy-transaction {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(172, 172, 172);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 352px;
+  }
+  
+  .account-input,
+  .money-input {
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+  }
+  
+  .decoy-pay {
+    
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(172, 172, 172);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  
+  .money-input {
+    margin-left: 10px;
+  }
+  
+  .div-transation-right {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 30px;
+    align-self: flex-end;
+    gap: 20px;
+  }
+  
+  .list-item-input {
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    text-decoration: underline solid rgb(128, 128, 128);
+
+  }
+  
+  
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  
+  .pay-now-button {
+    padding: 10px 20px;
+    background-color: #1953AD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 66px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .pay-now-button:hover {
+    background-color: #436fb1;
+  }
+  
